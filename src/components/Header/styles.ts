@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-
 import CaretLeft from 'phosphor-react-native/src/icons/CaretLeft';
 
 export const Container = styled.View`
