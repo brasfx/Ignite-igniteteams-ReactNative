@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { Container, Form, HeaderList, PlayersCounter } from './styles';
 import { Highlight } from '@components/Highlight';
@@ -11,7 +12,14 @@ import { Filter } from '@components/Filter';
 import { PlayerCard } from '@components/PlayerCard';
 import { ListEmpty } from '@components/ListEmpty';
 
+type RouteParams = {
+  group: string;
+};
+
 export const Players = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { group } = route.params as RouteParams;
   const [team, setTeam] = useState<string>('');
   const [teams, setTeams] = useState<string[]>(['Time 1', 'Time 2', 'Time 3']);
   const [selectedTeam, setSelectedTeam] = useState<string>(teams[0]);
@@ -42,13 +50,14 @@ export const Players = () => {
     setTeams(removedTeam);
   };
 
+  const handleGoHome = () => {
+    navigation.navigate('groups');
+  };
+
   return (
     <Container>
-      <Header showBackButton />
-      <Highlight
-        title="Nome da turma"
-        subtitle="Adicione a galera e separe os times"
-      />
+      <Header showBackButton onPress={handleGoHome} />
+      <Highlight title={group} subtitle="Adicione a galera e separe os times" />
       <Form>
         <Input
           placeholder="Nome da pessoa"

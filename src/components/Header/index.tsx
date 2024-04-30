@@ -4,13 +4,14 @@ import logo from '@assets/logo.png';
 
 type HeaderProps = {
   showBackButton?: boolean;
+  onPress?: () => void;
 };
 
-export const Header = ({ showBackButton = false }: HeaderProps) => {
+export const Header = ({ showBackButton = false, onPress }: HeaderProps) => {
   return (
     <Container>
       {showBackButton && (
-        <BackButton>
+        <BackButton onPress={onPress}>
           <BackIcon />
         </BackButton>
       )}
