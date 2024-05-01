@@ -6,6 +6,7 @@ import { Header } from '@components/Header';
 import { Button } from '@components/Button';
 import { Highlight } from '@components/Highlight';
 import { Input } from '@components/Input';
+import { createGroups } from '@storage/group/createGroups';
 
 export const NewGroup = () => {
   const navigation = useNavigation();
@@ -15,7 +16,8 @@ export const NewGroup = () => {
     navigation.navigate('groups');
   };
 
-  const handleCreateNewGroup = () => {
+  const handleCreateNewGroup = async () => {
+    await createGroups(group);
     navigation.navigate('players', { group });
   };
 
