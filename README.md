@@ -6,4 +6,6 @@
  - babel-plugin-module-resolver
  - phosphor-react-native
  - styled-components
- - @expo-google-fonts/roboto
+ - @expo-google-fonts
+ - async-storage
+ - react-navigation
